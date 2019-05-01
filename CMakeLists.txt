@@ -22,10 +22,12 @@ include_directories(
 set(aikidopy_headers
 	include/distance_py.hpp
 	include/state_space_py.hpp
+	include/trajectory_py.hpp
 )
 set(aikidopy_sources
 	src/distance_py.cpp
 	src/state_space_py.cpp
+	src/trajectory_py.cpp
 	src/aikidopy.cpp
 )
 
