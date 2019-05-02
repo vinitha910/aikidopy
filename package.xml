@@ -11,7 +11,7 @@
     <buildtool_depend>catkin</buildtool_depend>
 
     <depend>aikido</depend>
-    <!-- <depend>dartsim</depend> -->
+    <depend>rospy</depend>
     <depend>eigen</depend>
 
     <build_depend>pybind11_catkin</build_depend>

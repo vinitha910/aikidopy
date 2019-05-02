@@ -4,8 +4,8 @@ project(aikidopy)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 set(CMAKE_BUILD_TYPE Release)
 
-find_package(catkin REQUIRED COMPONENTS pybind11_catkin)
-find_package(aikido REQUIRED COMPONENTS statespace distance)
+find_package(catkin REQUIRED COMPONENTS pybind11_catkin rospy)
+find_package(aikido REQUIRED COMPONENTS statespace trajectory rviz)
 find_package(Eigen3 REQUIRED)
 
 catkin_package(
@@ -20,14 +20,16 @@ include_directories(
 )
 
 set(aikidopy_headers
-	include/distance_py.hpp
+	include/dart_py.hpp
 	include/state_space_py.hpp
 	include/trajectory_py.hpp
+	include/rviz_py.hpp
 )
 set(aikidopy_sources
-	src/distance_py.cpp
+	src/dart_py.cpp
 	src/state_space_py.cpp
 	src/trajectory_py.cpp
+	src/rviz_py.cpp
 	src/aikidopy.cpp
 )
 
@@ -40,6 +42,19 @@ target_include_directories(aikidopy PUBLIC
 	${aikido_INCLUDE_DIRS}
 )
 target_link_libraries(aikidopy PUBLIC
+  	${aikido_LIBRARIES}
+ 	${Eigen_LIBRARIES}
+  	${PYTHON_LIBRARIES}
+)
+
+add_library(libaikidopy SHARED
+  	${aikidopy_sources}
+)
+target_include_directories(libaikidopy PUBLIC 
+	${EIGEN3_INCLUDE_DIR} 
+	${aikido_INCLUDE_DIRS}
+)
+target_link_libraries(libaikidopy PUBLIC
   	${aikido_LIBRARIES}
  	${Eigen_LIBRARIES}
   	${PYTHON_LIBRARIES}

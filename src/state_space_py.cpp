@@ -1,5 +1,4 @@
 #include <state_space_py.hpp>
-#include <distance_py.hpp>
 #include <pybind11/eigen.h>
 #include <pybind11/stl_bind.h>
 #include <pybind11/stl.h>
@@ -10,6 +9,7 @@
 #include "aikido/statespace/ScopedState.hpp"
 #include "aikido/statespace/SE2.hpp"
 #include "aikido/statespace/GeodesicInterpolator.hpp"
+#include "aikido/statespace/Interpolator.hpp"
 
 namespace py = pybind11;
 
@@ -29,6 +29,7 @@ void StateSpaces(py::module& m)
 	ScopedState(m);
 	StateHandle(m);
 	SE2(m);
+	Interpolator(m);
 	GeodesicInterpolator(m);
 }
 
@@ -69,6 +70,11 @@ void SE2(py::module& m)
 		.def("getIsometry", [](statespace::SE2::State state) {
 			 	return state.getIsometry().matrix();
 		}, py::return_value_policy::reference_internal);
+}
+
+void Interpolator(py::module& m)
+{
+	py::class_<statespace::Interpolator>(m, "Interpolator");
 }
 
 void GeodesicInterpolator(py::module& m)
