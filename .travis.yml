@@ -66,7 +66,7 @@ before_script:
   - sudo add-apt-repository -y ppa:personalrobotics/ppa
   - sudo rm -vf /etc/apt/sources.list.d/*riak*
   - sudo apt-get update
-  - ros-$ROS_DISTRO-rospy ros-$ROS_DISTRO-pybind11-catkin libeigen3-dev 
+  - sudo apt-get install ros-$ROS_DISTRO-rospy ros-$ROS_DISTRO-pybind11-catkin libeigen3-dev 
   - sudo apt-get install cmake build-essential libboost-filesystem-dev libdart6-optimizer-nlopt-dev libdart6-utils-dev libdart6-utils-urdf-dev libmicrohttpd-dev libompl-dev libtinyxml2-dev libyaml-cpp-dev
   - sudo apt-get purge -y ros-kinetic-dartsim
   - sudo pip install pybind11
