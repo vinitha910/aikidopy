@@ -46,16 +46,3 @@ target_link_libraries(aikidopy PUBLIC
  	${Eigen_LIBRARIES}
   	${PYTHON_LIBRARIES}
 )
-
-add_library(libaikidopy SHARED
-  	${aikidopy_sources}
-)
-target_include_directories(libaikidopy PUBLIC 
-	${EIGEN3_INCLUDE_DIR} 
-	${aikido_INCLUDE_DIRS}
-)
-target_link_libraries(libaikidopy PUBLIC
-  	${aikido_LIBRARIES}
- 	${Eigen_LIBRARIES}
-  	${PYTHON_LIBRARIES}
-)
