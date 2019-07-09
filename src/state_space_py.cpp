@@ -66,6 +66,22 @@ void SE2(py::module& m)
 		.def(py::init([](const Isometry2d& _transform) {
 			return statespace::SE2::State(_transform);
 		}))
+		.def(py::init([](const double x, const double y, const double theta) {
+			statespace::SE2::State state;
+		    Eigen::Isometry2d transform = Eigen::Isometry2d::Identity();
+		    const Eigen::Rotation2D<double> rot(theta);
+		    transform.linear() = rot.toRotationMatrix();
+		    Eigen::Vector2d trans(x, y);
+		    transform.translation() = trans;
+		    state.setIsometry(transform);
+		    return state;
+		}))
+		.def("getTranslation", [](statespace::SE2::State state) {
+			return state.getIsometry().translation();
+		})
+		.def("getRotation", [](statespace::SE2::State state) {
+			return state.getIsometry().rotation();
+		})
 		.def("setIsometry", &statespace::SE2::State::setIsometry, py::arg("_transform"))
 		.def("getIsometry", [](statespace::SE2::State state) {
 			 	return state.getIsometry().matrix();
