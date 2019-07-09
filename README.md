@@ -1,4 +1,4 @@
-# aikidopy
+# aikidopy [![Build Status](https://travis-ci.com/vinitha910/aikidopy.svg?branch=master)](https://travis-ci.com/vinitha910/aikidopy)
 This catkin package contains python bindings for [aikido](https://github.com/personalrobotics/aikido). Note, not all classes/functions in aikido have been binded yet.
 
 # Dependencies
