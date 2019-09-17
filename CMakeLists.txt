@@ -1,8 +1,12 @@
-cmake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 3.0)
 project(aikidopy)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 set(CMAKE_BUILD_TYPE Release)
+
+set(PYBIND11_PYTHON_VERSION 3.5)
+find_package(PythonInterp 3.5 REQUIRED)
+find_package(PythonLibs 3.5 REQUIRED)
 
 find_package(catkin REQUIRED COMPONENTS pybind11_catkin rospy)
 find_package(aikido REQUIRED COMPONENTS statespace trajectory rviz)
