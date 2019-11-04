@@ -21,7 +21,7 @@ void InteractiveMarkerViewer(py::module& m)
 {
 	py::class_<rviz::InteractiveMarkerViewer>(m, "InteractiveMarkerViewer")
 		.def(py::init<const std::string&, const std::string&>())
-		.def("addSkeleton", &InteractiveMarkerViewer::addSkeleton, py::arg("skeleton"))
+		.def("addSkeletonMarker", &InteractiveMarkerViewer::addSkeletonMarker, py::arg("skeleton"))
 		.def("setAutoUpdate", &InteractiveMarkerViewer::setAutoUpdate, py::arg("flag"));
 }
 
